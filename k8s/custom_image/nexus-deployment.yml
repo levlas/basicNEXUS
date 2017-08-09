@@ -1,0 +1,38 @@
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nexus
+  namespace: default
+
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nexus
+    spec:
+      containers:
+        - name: nexus
+          image: leventel/nexus3:testv2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+            - containerPort: 5000
+          volumeMounts:
+            - name: nexus-data
+              mountPath: /nexus-data
+          resources:
+            requests:
+              cpu: 250m
+              memory: 1.0Gi
+            limits:
+              cpu: 275m
+              memory: 1.8Gi
+      volumes:
+        - name: nexus-data
+          hostPath:
+            path: /hosthome/leventel/basicNEXUS_data/
