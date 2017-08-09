@@ -3,7 +3,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nexus
+  name: nexus-official
   namespace: default
 
 spec:
@@ -13,10 +13,10 @@ spec:
   template:
     metadata:
       labels:
-        app: nexus
+        app: nexus-official
     spec:
       containers:
-        - name: nexus
+        - name: nexus-official
           image: sonatype/nexus3:3.3.1
           imagePullPolicy: IfNotPresent
           ports:
@@ -35,4 +35,4 @@ spec:
       volumes:
         - name: nexus-data
           hostPath:
-            path: /hosthome/leventel/basicNEXUS_data/
+            path: /hosthome/leventel/basicNEXUS_data_official/

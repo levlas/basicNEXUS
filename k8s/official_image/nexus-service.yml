@@ -2,19 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: nexus
-  name: nexus
+    app: nexus-official
+  name: nexus-official
   namespace: default
-  selfLink: /api/v1/namespaces/default/services/nexus
+  selfLink: /api/v1/namespaces/default/services/nexus-official
 
 spec:
   ports:
     - name: http
-      port: 80
+      port: 8080
       targetPort: 8081
     - name: docker
-      port: 5000
+      port: 5001
       targetPort: 5000
   selector:
-    app: nexus
+    app: nexus-official
   type: NodePort
