@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nexus-official
-          image: sonatype/nexus3:3.3.1
+          image: sonatype/nexus3:3.1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
@@ -35,4 +35,4 @@ spec:
       volumes:
         - name: nexus-data
           hostPath:
-            path: /hosthome/leventel/basicNEXUS_data_official/
+            path: /mnt/sda1/nexus_data_volume
